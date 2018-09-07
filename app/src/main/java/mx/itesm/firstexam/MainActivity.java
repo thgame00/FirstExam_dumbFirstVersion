@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
     Button resetButton;
     TextView scoreText;
     TextView cpuChoice;
+    boolean rock = false;
+    boolean scissor = false;
+    boolean paper = false;
     int cpuChoiceInt = 1;  //1: Rock, 2: Scissors, 3: Paper
     int cpuScore = 0;
     int playerScore = 0;
@@ -41,80 +44,95 @@ public class MainActivity extends AppCompatActivity {
         rockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast result = new Toast(context);
-                cpuChoiceInt = r.nextInt(3)+1;
-                switch(cpuChoiceInt){
-                    case 1://rock
-                        cpuChoice.setText("CPU chose Rock!");
-                        result.makeText(context, "Game is tied!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2://scissors
-                        cpuChoice.setText("CPU chose Scissors!");
-                        playerScore++;
-                        result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 3://paper
-                        cpuChoice.setText("CPU chose Paper!");
-                        cpuScore++;
-                        result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
-                        break;
-                }
-                String aux = playerScore + " : " + cpuScore;
-                scoreText.setText(aux);
+               rock = true;
             }
         });
+
+        if(rock){
+            Toast result = new Toast(context);
+            cpuChoiceInt = r.nextInt(3)+1;
+            switch(cpuChoiceInt){
+                case 1://rock
+                    cpuChoice.setText("CPU chose Rock!");
+                    result.makeText(context, "Game is tied!", Toast.LENGTH_LONG).show();
+                    break;
+                case 2://scissors
+                    cpuChoice.setText("CPU chose Scissors!");
+                    playerScore++;
+                    result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
+                    break;
+                case 3://paper
+                    cpuChoice.setText("CPU chose Paper!");
+                    cpuScore++;
+                    result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
+                    break;
+            }
+            String aux = playerScore + " : " + cpuScore;
+            scoreText.setText(aux);
+            rock = false;
+        }
 
         scissorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cpuChoiceInt = r.nextInt(3)+1;
-                Toast result = new Toast(context);
-                switch(cpuChoiceInt){
-                    case 1://rock
-                        cpuChoice.setText("CPU chose Rock!");
-                        cpuScore++;
-                        result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2://scissors
-                        cpuChoice.setText("CPU chose Scissors!");
-                        result.makeText(context, "Game is tied!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 3://paper
-                        cpuChoice.setText("CPU chose Paper!");
-                        playerScore++;
-                        result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
-                        break;
-                }
-                String aux = playerScore + " : " + cpuScore;
-                scoreText.setText(aux);
+                scissor = true;
             }
         });
+
+        if(scissor){
+            cpuChoiceInt = r.nextInt(3)+1;
+            Toast result = new Toast(context);
+            switch(cpuChoiceInt){
+                case 1://rock
+                    cpuChoice.setText("CPU chose Rock!");
+                    cpuScore++;
+                    result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
+                    break;
+                case 2://scissors
+                    cpuChoice.setText("CPU chose Scissors!");
+                    result.makeText(context, "Game is tied!", Toast.LENGTH_LONG).show();
+                    break;
+                case 3://paper
+                    cpuChoice.setText("CPU chose Paper!");
+                    playerScore++;
+                    result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
+                    break;
+            }
+            String aux = playerScore + " : " + cpuScore;
+            scoreText.setText(aux);
+            scissor = false;
+        }
 
         paperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cpuChoiceInt = r.nextInt(3)+1;
-                Toast result = new Toast(context);
-                switch(cpuChoiceInt){
-                    case 1://rock
-                        cpuChoice.setText("CPU chose Rock!");
-                        playerScore++;
-                        result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 2://scissors
-                        cpuChoice.setText("CPU chose Scissors!");
-                        cpuScore++;
-                        result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
-                        break;
-                    case 3://paper
-                        cpuChoice.setText("CPU chose Paper!");
-                        result.makeText(context, "Game is tied!!", Toast.LENGTH_LONG).show();
-                        break;
-                }
-                String aux = playerScore + " : " + cpuScore;
-                scoreText.setText(aux);
+                paper = true;
             }
         });
+
+        if(paper){
+            cpuChoiceInt = r.nextInt(3)+1;
+            Toast result = new Toast(context);
+            switch(cpuChoiceInt){
+                case 1://rock
+                    cpuChoice.setText("CPU chose Rock!");
+                    playerScore++;
+                    result.makeText(context, "Player wins!", Toast.LENGTH_LONG).show();
+                    break;
+                case 2://scissors
+                    cpuChoice.setText("CPU chose Scissors!");
+                    cpuScore++;
+                    result.makeText(context, "CPU wins!", Toast.LENGTH_LONG).show();
+                    break;
+                case 3://paper
+                    cpuChoice.setText("CPU chose Paper!");
+                    result.makeText(context, "Game is tied!!", Toast.LENGTH_LONG).show();
+                    break;
+            }
+            String aux = playerScore + " : " + cpuScore;
+            scoreText.setText(aux);
+            paper = false;
+        }
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
